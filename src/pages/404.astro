@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="404 – Strona nie istnieje | Inferno Cheer Elite"
+  description="Ups! Ta strona nie istnieje. Wróć na stronę główną Inferno Cheer Elite."
+>
+  <main
+    id="main-content"
+    class="min-h-[60vh] flex items-center justify-center py-8 px-4 bg-background"
+  >
+    <div class="container mx-auto max-w-7xl">
+      <div class="flex flex-col items-center text-center lg:flex-row lg:items-center lg:justify-center lg:text-left lg:gap-20">
+
+        {/* LEFT */}
+        <div class="relative flex-shrink-0 flex flex-col items-center lg:items-end mb-6 lg:mb-0" aria-hidden="true">
+          <div class="absolute inset-0 blur-3xl bg-brand-500/15 rounded-full scale-125 pointer-events-none"></div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="relative w-14 h-14 lg:w-20 lg:h-20 text-brand-500 drop-shadow-[0_0_24px_rgba(217,10,20,0.55)] mb-1"
+          >
+            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+          </svg>
+          <p class="font-gothic text-[clamp(6rem,20vw,10rem)] leading-none text-brand-500 select-none tracking-tight">
+            404
+          </p>
+        </div>
+
+        {/* DIVIDER */}
+        <div class="hidden lg:block w-px self-stretch bg-border/40" aria-hidden="true"></div>
+
+        {/* RIGHT */}
+        <div class="lg:max-w-sm">
+          <h1 class="font-spartan font-bold text-2xl lg:text-3xl text-foreground mb-3 tracking-tight">
+            Wyszedłeś poza&nbsp;strefę tańca!
+          </h1>
+          <p class="text-zinc-400 text-sm lg:text-base mb-8 leading-relaxed">
+            Ta strona nie istnieje. Może to pomylone kroki?<br />
+            Wróć na parkiet i spróbuj od nowa.
+          </p>
+          <a
+            href="/"
+            class="inline-flex items-center gap-2.5 bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-6 py-3.5 rounded-lg shadow-lg shadow-brand-500/20 transition-colors min-h-[44px]"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
+            </svg>
+            Wróć na stronę główną
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,119 @@
+---
+import '@/styles/global.css';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { CookieBanner } from '@/components/CookieBanner';
+import { siteConfig } from "@/config/site.ts";
+import gothicFont from '@fontsource/league-gothic/files/league-gothic-latin-400-normal.woff2?url';
+import spartanFont from '@fontsource-variable/league-spartan/files/league-spartan-latin-wght-normal.woff2?url';
+import vazirmatanFont from '@fontsource-variable/vazirmatn/files/vazirmatn-latin-wght-normal.woff2?url';
+import heroBg from '../assets/images/inferno-cheer-elite-hero-bg-tiger-pattern.webp';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const {
+	title,
+	description = 'Inferno Cheer Elite – szkoła cheerleadingu i tańca w Tarnowie. Zajęcia dla dzieci, młodzieży i dorosłych. Dołącz do nas i odkryj radość ruchu!'
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/inferno-cheer-elite-tarnow-og.jpg', Astro.site);
+---
+
+<!doctype html>
+<html lang="pl" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#111111" />
+		<link rel="preload" href={gothicFont} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={spartanFont} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={vazirmatanFont} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={heroBg.src} as="image" type="image/webp" fetchpriority="high" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:locale" content="pl_PL" />
+		<meta property="og:site_name" content="Inferno Cheer Elite" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+
+		<!-- Google Tag Manager -->
+		<script is:inline>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('consent', 'default', {
+			'ad_storage': 'denied',
+			'analytics_storage': 'denied',
+			'ad_user_data': 'denied',
+			'ad_personalization': 'denied',
+			'wait_for_update': 500
+		});
+		</script>
+		<script async is:inline src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_MEASUREMENT_ID}`}></script>
+		<script is:inline define:vars={{ gaMeasurementId: import.meta.env.PUBLIC_GA_MEASUREMENT_ID }}>
+		gtag('js', new Date());
+		gtag('config', gaMeasurementId);
+		</script>
+
+		<!-- Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "SportsClub",
+			name: siteConfig.name,
+			url: siteConfig.url,
+			telephone: siteConfig.contact.phoneRaw,
+			email: siteConfig.contact.email,
+			image: ogImage,
+			description: "Szkoła cheerleadingu i tańca w Tarnowie. Zajęcia dla dzieci, młodzieży i dorosłych.",
+			address: {
+				"@type": "PostalAddress",
+				streetAddress: siteConfig.contact.address.street,
+				addressLocality: siteConfig.contact.address.city,
+				addressCountry: siteConfig.contact.address.country,
+			},
+			sameAs: [
+				siteConfig.social.facebook,
+				siteConfig.social.instagram,
+			],
+		})} />
+	</head>
+	<body class="bg-background text-foreground antialiased font-sans min-h-screen flex flex-col">
+		<!-- Skip link -->
+		<a
+			href="#main-content"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-brand-500 focus:text-white focus:font-bold focus:shadow-lg"
+		>
+			Przejdź do treści
+		</a>
+
+		<Header client:load />
+		<div class="flex-1">
+			<slot />
+		</div>
+		<Footer />
+
+		<CookieBanner client:idle />
+	</body>
+</html>

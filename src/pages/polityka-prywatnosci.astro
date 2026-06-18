@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Content } from '../content/polityka-prywatnosci.md';
+---
+
+<Layout
+  title="Polityka Prywatności | Inferno Cheer Elite"
+  description="Polityka prywatności serwisu Inferno Cheer Elite – zasady przetwarzania i ochrony danych osobowych."
+>
+  <main id="main-content" class="bg-background py-16 px-4">
+    <div class="container mx-auto max-w-7xl">
+
+      <div class="mb-12">
+        <p class="text-brand-500 text-sm font-semibold uppercase tracking-widest mb-3">Transparentność</p>
+        <h1 class="font-spartan font-bold text-4xl lg:text-5xl text-foreground tracking-tight mb-4">
+          Polityka Prywatności
+        </h1>
+        <p class="text-zinc-600 text-sm">Ostatnia aktualizacja: maj 2026</p>
+      </div>
+
+      <div class="policy-content">
+        <Content />
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-border">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-zinc-400 hover:text-brand-500 transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
+          </svg>
+          Wróć na stronę główną
+        </a>
+      </div>
+
+    </div>
+  </main>
+</Layout>
+
+<style is:global>
+  .policy-content h2 {
+    font-family: var(--font-spartan);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: #ffffff;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: -0.01em;
+  }
+
+  .policy-content p {
+    color: #a1a1aa;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-size: 0.9375rem;
+  }
+
+  .policy-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .policy-content li {
+    color: #a1a1aa;
+    line-height: 1.75;
+    font-size: 0.9375rem;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .policy-content li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #D90A14;
+  }
+
+  .policy-content a {
+    color: #D90A14;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .policy-content a:hover {
+    color: #E13B43;
+    text-decoration: underline;
+  }
+
+  .policy-content strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .policy-content em {
+    color: #71717a;
+    font-style: normal;
+    font-size: 0.875rem;
+  }
+</style>
