@@ -18,7 +18,8 @@ pnpm-debug.log*
 .env.production
 
 # raw gallery originals — compressed versions go to src/assets/gallery/
-gallery-source/
+gallery-source/*
+!gallery-source/.gitkeep
 
 # macOS-specific files
 .DS_Store
